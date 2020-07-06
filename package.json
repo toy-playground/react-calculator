@@ -10,7 +10,6 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "clsx": "latest",
-    "electron-builder": "^22.7.0",
     "react": "latest",
     "react-app-rewired": "^2.1.6",
     "react-dom": "latest",
