@@ -1,0 +1,32 @@
+{
+  "name": "cc",
+  "version": "4.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@material-ui/core": "latest",
+    "clsx": "latest",
+    "electron-builder": "^22.7.0",
+    "react": "latest",
+    "react-app-rewired": "^2.1.6",
+    "react-dom": "latest",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "latest"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
