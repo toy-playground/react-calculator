@@ -1,17 +1,11 @@
 import React  from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import {
     fade,
-    ThemeProvider,
     withStyles,
     makeStyles,
-    createMuiTheme,
-    ServerStyleSheets,
   } from '@material-ui/core/styles';
   import InputBase from '@material-ui/core/InputBase';
-import Input from '@material-ui/core/Input';
-import resContext from './resContext'
+import resContext from './context/resContext'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -48,7 +42,7 @@ const BootstrapInput = withStyles((theme) => ({
 
 export default function ResDisplay() {
     const classes = useStyles();
-    const res = React.useContext(resContext) 
+    const res = React.useContext(resContext)
     // var res="0"
     return (
         <div className={classes.root} align="center">

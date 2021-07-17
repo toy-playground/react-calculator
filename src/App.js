@@ -1,25 +1,27 @@
-import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
 
-import More from './More'
-import CommonCal from './CommonCal'
-import SciCal from './sciCal'
+import More from "./views/More";
+import CommonCal from "./CommonCal";
+import SciCal from "./sciCal";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link as RouterLink,
 } from "react-router-dom";
-
+import Copyright from "./components/CopyRight";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    height: "100vh",
+    width: "100vw",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -34,39 +36,51 @@ const useStyles = makeStyles((theme) => ({
   link: {
     width: 100,
   },
-  AppBar:{
-    backgroundColor:theme.primary.main
-  }
+  AppBar: {
+    backgroundColor: "transparent",
+    color: theme.primary.main,
+    boxShadow: "none",
+  },
+  bottomBar: {
+    position: "fixed",
+    bottom: 0,
+    right: 0,
+    left: 0,
+  },
 }));
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
+
 
 export default function App() {
   const classes = useStyles();
   return (
-    // <Container maxWidth="sm">
-    
-      <div>
-        <Router>
-        <AppBar position="static" className={classes.AppBar}>
+    <div className={classes.root}>
+      <Router>
+        <AppBar
+          position="fixed"
+          className={classes.AppBar}
+        >
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
               Calculator
-          </Typography>
+            </Typography>
             <Button color="inherit" component={RouterLink} size="large" to="/">
               普通
             </Button>
-            <Button color="inherit" component={RouterLink} size="large" to="/mode">
+            <Button
+              color="inherit"
+              component={RouterLink}
+              size="large"
+              to="/mode"
+            >
               科学
             </Button>
-            <Button color="inherit" component={RouterLink} size="large"  to="/more">
+            <Button
+              color="inherit"
+              component={RouterLink}
+              size="large"
+              to="/more"
+            >
               More
             </Button>
           </Toolbar>
@@ -76,23 +90,16 @@ export default function App() {
             <More />
           </Route>
           <Route path="/mode">
-            <SciCal></SciCal>
-            {/* <h2>科学计算模式</h2> */}
+            <SciCal />
           </Route>
           <Route path="/">
-          {/* <h2>普通计算模式</h2> */}
             <CommonCal />
           </Route>
         </Switch>
-        <Box my={4}>
-          {/* <Typography variant="h4" component="h1" gutterBottom>
-          Create React App v4-beta example
-        </Typography> */}
+        <Box my={4} className={classes.bottomBar}>
           <Copyright />
         </Box>
-        {/* </Container> */}
-        </Router>
-      </div>
-   
+      </Router>
+    </div>
   );
 }

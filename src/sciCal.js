@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ResDisplay from './ResDisplay.js'
 import Button from '@material-ui/core/Button';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import resContext from './resContext'
+import resContext from './context/resContext'
 const useStyles = makeStyles((theme) => ({
     root: {
         height: "100%",
@@ -157,13 +157,13 @@ function reducer(state, action) {
                 ll = ll.slice(1);
                 else
                 ll = "-" + ll;
-    
+
                 return { res: ll }
                 // setRes(eval(res) + '');
             } catch (e) {
                 return { res: "NAN" }
             }
-            
+
         case '+':
         case '-':
         case '*':
