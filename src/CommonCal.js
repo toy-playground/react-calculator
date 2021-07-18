@@ -1,10 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import ResDisplay from "./ResDisplay.js";
+import ResDisplay from "./components/Display/index.js";
 import Button from "@material-ui/core/Button";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import resContext from "./context/resContext";
-
+import { initialState,reducer } from "./model/index.js";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
@@ -93,57 +93,7 @@ const theme3 = createMuiTheme({
   },
 });
 
-const initialState = { res: "0" };
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "ww":
-      return { res: "520" };
-    case "c":
-      return { res: "0" };
-      break;
-    case "=":
-      try {
-        var ll = state.res;
-        ll = ll.replace("%", "*0.01");
-        return { res: eval(ll) + "" };
-        // setRes(eval(res) + '');
-      } catch (e) {
-        return { res: "NAN" };
-      }
-      break;
-    case "+/-":
-      var ll = state.res;
-      try {
-        ll = eval(ll) + "";
-        if (ll[0] === "-") ll = ll.slice(1);
-        else ll = "-" + ll;
-
-        return { res: ll };
-        // setRes(eval(res) + '');
-      } catch (e) {
-        return { res: "NAN" };
-      }
-
-    case "+":
-    case "-":
-    case "*":
-    case "/":
-      if (
-        state.res.slice(-1) == "+" ||
-        state.res.slice(-1) == "-" ||
-        state.res.slice(-1) == "*" ||
-        state.res.slice(-1) == "/"
-      )
-        return { res: state.res.slice(0, -1) + action.type };
-      else return { res: state.res + action.type };
-      break;
-    default:
-      return { res: state.res === "0" ? action.type : state.res + action.type };
-      // setRes(res==='0'?type:res+type)
-      break;
-  }
-}
 
 export default function CommonCal() {
   const classes = useStyles();

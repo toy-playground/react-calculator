@@ -7,8 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 import More from "./views/More";
-import CommonCal from "./CommonCal";
-import SciCal from "./sciCal";
+import Calculator from "./views/Calculator";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,7 +18,7 @@ import Copyright from "./components/CopyRight";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    boxSizing: "border-box",
     height: "100vh",
     width: "100vw",
   },
@@ -49,17 +48,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function App() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Router>
-        <AppBar
-          position="fixed"
-          className={classes.AppBar}
-        >
+        <AppBar position="fixed" className={classes.AppBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
               Calculator
@@ -90,10 +84,10 @@ export default function App() {
             <More />
           </Route>
           <Route path="/mode">
-            <SciCal />
+            <Calculator sci="true" />
           </Route>
           <Route path="/">
-            <CommonCal />
+            <Calculator />
           </Route>
         </Switch>
         <Box my={4} className={classes.bottomBar}>
