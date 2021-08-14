@@ -1,4 +1,4 @@
-import React from "react";
+import { useReducer, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import ResDisplay from "../../components/Display/index.js";
 import Button from "@material-ui/core/Button";
@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
 const Calculator = () => {
   const classes = useStyles();
   const BUTTON_LIST = [
+    "del",
+    "1/x",
+    "x^2",
+    "2√x",
     "AC",
     "+/-",
     "%",
@@ -59,7 +63,40 @@ const Calculator = () => {
     ".",
     "=",
   ];
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+
+  useEffect(() => {
+    document.onkeydown = (event) => {
+      const e = event || window.event || arguments.callee.caller.arguments[0];
+      const key = e.keyCode;
+      if (
+        e &&
+        ((key >= 96 && key <= 105) || (key >= 48 && key <= 57 && !e.shiftKey))
+      ) {
+        dispatch({ type: (key >= 96 ? key - 96 : key - 48) + "" });
+      } else if (e && key == 106) {
+        dispatch({ type: "*" });
+      } else if (e && (key === 107 || (key === 187 && e.shiftKey))) {
+        dispatch({ type: "+" });
+      } else if (
+        e &&
+        (key === 108 || key === 13 || (key === 187 && !e.shiftKey))
+      ) {
+        dispatch({ type: "=" });
+      } else if (e && (key == 109 || (key === 189 && !e.shiftKey))) {
+        dispatch({ type: "-" });
+      } else if (e && (key == 110 || (key === 189 && !e.shiftKey))) {
+        dispatch({ type: "." });
+      } else if (e && (key == 111 || (key === 190 && !e.shiftKey))) {
+        dispatch({ type: "/" });
+      } else if (e && key === 8) {
+        dispatch({ type: "del" });
+      }
+    };
+    return () => {
+      document.onkeydown = undefined;
+    };
+  }, []);
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <div className={classes.root}>
       <h1 align="center" className={classes.h1}>
