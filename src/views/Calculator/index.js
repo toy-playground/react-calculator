@@ -84,9 +84,9 @@ const Calculator = () => {
         dispatch({ type: "=" });
       } else if (e && (key == 109 || (key === 189 && !e.shiftKey))) {
         dispatch({ type: "-" });
-      } else if (e && (key == 110 || (key === 189 && !e.shiftKey))) {
+      } else if (e && (key == 110 || (key === 190 && !e.shiftKey))) {
         dispatch({ type: "." });
-      } else if (e && (key == 111 || (key === 190 && !e.shiftKey))) {
+      } else if (e && (key == 111 || (key === 191 && !e.shiftKey))) {
         dispatch({ type: "/" });
       } else if (e && key === 8) {
         dispatch({ type: "del" });
