@@ -18,4 +18,4 @@ npm start
     简陋的解决方案：引入jquery,写`<script>`标签来解决。
 
 记录：
-gh-pages `<script`标签要引入./相对路径，默认是绝对路径会404,homepage搞一下
+gh-pages `<script>`标签要引入./相对路径，默认是绝对路径会404,homepage搞一下

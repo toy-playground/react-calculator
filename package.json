@@ -12,6 +12,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "clsx": "latest",
+    "mathjs": "^9.4.4",
     "react": "latest",
     "react-app-rewired": "^2.1.6",
     "react-dom": "latest",

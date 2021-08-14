@@ -1,56 +1,57 @@
 /* eslint-disable  no-eval */
+import { create, all } from "mathjs";
+
+const math = create(all);
 const initialState = { res: "0" };
 function reducer(state, action) {
-  let ll;
+  let ll = state.res;
+  if (ll.indexOf("Error") !== -1) {
+    return { res: "0" };
+  }
+  if (
+    ll === "0" &&
+    ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "-"].indexOf(
+      action.type
+    ) !== -1
+  ) {
+    ll = "";
+  }
   switch (action.type) {
     case "del":
-      ll = state.res;
-      ll = ll.slice(0, -1);
-      if (ll === "") ll = "0";
-      return { res: ll };
+      return { res: ll.length <= 1 ? "0" : ll.slice(0, -1) };
     case "1/x":
-      ll = state.res;
       try {
-        ll = 1 / eval(ll) + "";
-        return { res: ll };
+        return { res: math.evaluate(`1 / (${ll})`) + "" };
       } catch (e) {
-        return { res: "NAN" };
+        return { res: "Error" };
       }
     case "x^2":
-      ll = state.res;
       try {
-        ll = eval(ll) * eval(ll) + "";
-        return { res: ll };
+        return { res: math.pow(math.evaluate(ll), 2) + "" };
       } catch (e) {
-        return { res: "NAN" };
+        return { res: "Error" };
       }
-    case "2(x":
-      ll = state.res;
+    case "2√x":
       try {
-        ll = Math.sqrt(eval(ll)) + "";
-        return { res: ll };
+        return { res: math.sqrt(math.evaluate(ll)) + "" };
       } catch (e) {
-        return { res: "NAN" };
+        return { res: "Error" };
       }
     case "AC":
       return { res: "0" };
     case "=":
       try {
-        ll = state.res;
-        ll = ll.replace("%", "*0.01");
-        return { res: eval(ll) + "" };
+        ll = ll.replaceAll("%", "*0.01");
+        return { res: math.evaluate(ll) + "" };
       } catch (e) {
-        return { res: "NAN" };
+        return { res: "Error" };
       }
     case "+/-":
-      ll = state.res;
       try {
-        ll = eval(ll) + "";
-        if (ll[0] === "-") ll = ll.slice(1);
-        else ll = "-" + ll;
-        return { res: ll };
+        ll = math.evaluate(ll) + "";
+        return { res: ll[0] === "-" ? ll.slice(1) : "-" + ll };
       } catch (e) {
-        return { res: "NAN" };
+        return { res: "Error" };
       }
     case "+":
     case "-":
