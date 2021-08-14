@@ -5,7 +5,7 @@ import resContext from "../../context/resContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 500,
+    width: '100%',
     margin: "auto auto",
     textAlign: "center",
     boxSizing: "border-box",

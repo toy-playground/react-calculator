@@ -65,14 +65,6 @@ export default function App() {
               color="inherit"
               component={RouterLink}
               size="large"
-              to="/mode"
-            >
-              科学
-            </Button>
-            <Button
-              color="inherit"
-              component={RouterLink}
-              size="large"
               to="/more"
             >
               More
@@ -80,13 +72,10 @@ export default function App() {
           </Toolbar>
         </AppBar>
         <Switch>
-          <Route path="/more">
+          <Route path="/react-calculator/more">
             <More />
           </Route>
-          <Route path="/mode">
-            <Calculator sci="true" />
-          </Route>
-          <Route path="/">
+          <Route path="/react-calculator/">
             <Calculator />
           </Route>
         </Switch>
