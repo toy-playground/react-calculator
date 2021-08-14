@@ -58,14 +58,14 @@ export default function App() {
             <Typography variant="h6" className={classes.title}>
               Calculator
             </Typography>
-            <Button color="inherit" component={RouterLink} size="large" to="/">
+            <Button color="inherit" component={RouterLink} size="large" to="/react-calculator/">
               普通
             </Button>
             <Button
               color="inherit"
               component={RouterLink}
               size="large"
-              to="/more"
+              to="/react-calculator/more"
             >
               More
             </Button>
