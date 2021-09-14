@@ -41,10 +41,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
   },
   bottomBar: {
-    position: "fixed",
-    bottom: 0,
-    right: 0,
-    left: 0,
+    paddingBottom: 32,
   },
 }));
 
