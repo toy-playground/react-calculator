@@ -32,6 +32,7 @@ const Input = withStyles((theme) => ({
   },
 }))(InputBase);
 
+/** 计算器上面的显示组件 */
 export default function ResDisplay() {
   const classes = useStyles();
   const res = React.useContext(resContext);

@@ -92,9 +92,11 @@ const Calculator = () => {
         dispatch({ type: "del" });
       }
     };
+    // useEffect 注销函数，在组件销毁时触发
     return () => {
       document.onkeydown = undefined;
     };
+    // dep为[] 时，只触发一次
   }, []);
   const [state, dispatch] = useReducer(reducer, initialState);
   return (

@@ -1,8 +1,10 @@
-/* eslint-disable  no-eval */
-import { create, all } from "mathjs";
+import { create, all } from "mathjs"; // 使用 mathjs 来进行精确的数学计算
 
+// model 层一般用来存储和管理全局状态,当然比较复杂的时候可以借助 Redux, Mobx 等来管理
+// 在计算器这个例子中，使用的是 React 官方提供的 hook:useReducer  https://reactjs.org/docs/hooks-reference.html#usereducer
 const math = create(all);
-const initialState = { res: "0" };
+const initialState = { res: "0" };// 全局状态
+// reducer就是传到 useReducer 里的函数，基于不同 action 给出不同状态的结果
 function reducer(state, action) {
   let ll = state.res;
   if (ll.indexOf("Error") !== -1) {

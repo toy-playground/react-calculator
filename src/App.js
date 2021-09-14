@@ -48,11 +48,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/** 给出路由配置, 并提取出每个页面公有部分, 在此项目中是导航栏和底部 footer */
 export default function App() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Router>
+        {/* 导航栏 */}
         <AppBar position="fixed" className={classes.AppBar}>
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
@@ -79,6 +81,7 @@ export default function App() {
             <Calculator />
           </Route>
         </Switch>
+        {/* 底部 footer */}
         <Box my={4} className={classes.bottomBar}>
           <Copyright />
         </Box>

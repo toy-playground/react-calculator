@@ -3,10 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center',
-    justifyContent:'center'
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   title: {
     color: theme.primary.title
@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+// 纯展示页面
 export default function More() {
   const classes = useStyles();
   return (
